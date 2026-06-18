@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    background: #060608;
+    color: #fafafa;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: 'Manrope', sans-serif; letter-spacing: -0.02em; }
+  .gradient-text {
+    background: linear-gradient(135deg, #c4b5fd 0%, #818cf8 40%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .gradient-text-warm {
+    background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .gradient-text-green {
+    background: linear-gradient(135deg, #4ade80 0%, #2dd4bf 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .gradient-text-rose {
+    background: linear-gradient(135deg, #fb7185 0%, #f43f5e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-grid-subtle {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .glass {
+    background: rgba(24, 24, 27, 0.5);
+    border: 1px solid rgba(63, 63, 70, 0.4);
+    backdrop-filter: blur(12px);
+  }
+  .glass-strong {
+    background: rgba(24, 24, 27, 0.75);
+    border: 1px solid rgba(63, 63, 70, 0.6);
+    backdrop-filter: blur(16px);
+  }
+  .glow-violet { box-shadow: 0 0 60px -10px rgba(139, 92, 246, 0.3); }
+  .glow-emerald { box-shadow: 0 0 60px -10px rgba(34, 197, 94, 0.25); }
+  .glow-amber { box-shadow: 0 0 60px -10px rgba(245, 158, 11, 0.2); }
+  .glow-rose { box-shadow: 0 0 60px -10px rgba(244, 63, 94, 0.2); }
+
+  /* Buttons */
+  .btn-primary {
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    transition: all 0.2s;
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    box-shadow: 0 8px 30px -8px rgba(139, 92, 246, 0.6);
+    transform: translateY(-1px);
+  }
+  .btn-ghost {
+    border: 1px solid rgba(63, 63, 70, 0.6);
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover {
+    border-color: rgba(139, 92, 246, 0.5);
+    background: rgba(139, 92, 246, 0.08);
+  }
+
+  /* Option button */
+  .option-btn {
+    background: rgba(24, 24, 27, 0.5);
+    border: 1px solid rgba(63, 63, 70, 0.5);
+    transition: all 0.15s ease;
+  }
+  .option-btn:hover {
+    border-color: rgba(139, 92, 246, 0.5);
+    background: rgba(39, 39, 42, 0.7);
+  }
+  .option-btn.selected {
+    border-color: #8b5cf6;
+    background: rgba(139, 92, 246, 0.12);
+    color: white;
+  }
+
+  /* Nav link underline */
+  .nav-link { position: relative; transition: color 0.2s ease; }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -4px;
+    height: 2px;
+    background: linear-gradient(90deg, #a78bfa, #6366f1);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+    transform-origin: left;
+  }
+  .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+
+  /* Section eyebrow badge */
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 999px;
+    font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .eyebrow-violet { background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.25); color: #a78bfa; }
+  .eyebrow-green { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); color: #4ade80; }
+  .eyebrow-rose { background: rgba(244,63,94,0.1); border: 1px solid rgba(244,63,94,0.25); color: #fb7185; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: #060608; }
+  ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+}

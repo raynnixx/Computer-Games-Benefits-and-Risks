@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Компьютерные игры: польза и риски • Google Sites версия</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+    
+    :root {
+      --primary: 139 92 246;
+    }
+    
+    body {
+      font-family: 'Inter', system_ui, sans-serif;
+    }
+    
+    .heading-font {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-weight: 600;
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(to right, #8b5cf6, #6366f1);
+      border-radius: 3px;
+    }
+
+    .nav-active {
+      color: #a78bfa;
+      font-weight: 500;
+    }
+
+    .card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    }
+
+    .stat-card {
+      background: #18181b;
+    }
+
+    .benefit-card {
+      background: #18181b;
+      border: 1px solid #27272a;
+    }
+
+    .risk-card {
+      background: #18181b;
+      border: 1px solid #27272a;
+    }
+
+    .timeline-item {
+      position: relative;
+    }
+    
+    .simple-bar {
+      height: 22px;
+      background: linear-gradient(90deg, #a78bfa, #6366f1);
+      border-radius: 9999px;
+      transition: width 0.6s ease;
+    }
+
+    .nav-link {
+      transition: color 0.2s ease;
+    }
+    
+    .nav-link:hover {
+      color: #a78bfa;
+    }
+
+    .google-sites-note {
+      background: #1f2937;
+      border: 1px solid #374151;
+    }
+
+    .rec-item {
+      transition: all 0.2s ease;
+    }
+    
+    .rec-item.completed {
+      opacity: 0.65;
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200">
+  <!-- Google Sites Instructions Banner -->
+  <div class="bg-zinc-900 border-b border-zinc-800 py-3">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-info-circle text-violet-400"></i>
+        <span class="text-zinc-300">Это упрощённая версия для <strong>Google Sites</strong></span>
+      </div>
+      <div class="flex items-center gap-2 text-xs">
+        <button onclick="copyAllContent()" 
+                class="px-4 py-1.5 bg-violet-600 hover:bg-violet-500 text-white rounded-full text-xs flex items-center gap-2">
+          <i class="fa-solid fa-copy"></i> 
+          <span>Скопировать весь текст для Google Sites</span>
+        </button>
+        <a href="#instructions" class="px-3 py-1.5 border border-zinc-700 hover:bg-zinc-800 rounded-full text-xs flex items-center gap-1">
+          Как использовать
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-zinc-950/95 backdrop-blur border-b border-zinc-800">
+    <div class="max-w-6xl mx-auto px-5 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-gradient-to-br from-violet-500 to-indigo-600 rounded-xl flex items-center justify-center">
+          <i class="fa-solid fa-gamepad text-white text-lg"></i>
+        </div>
+        <div>
+          <span class="font-semibold text-lg">Игры: Польза и Риски</span>
+        </div>
+      </div>
+      
+      <div class="hidden md:flex items-center gap-x-6 text-sm">
+        <a href="#about" class="nav-link text-zinc-400 hover:text-white">О проекте</a>
+        <a href="#benefits" class="nav-link text-zinc-400 hover:text-white">Польза</a>
+        <a href="#risks" class="nav-link text-zinc-400 hover:text-white">Риски</a>
+        <a href="#history" class="nav-link text-zinc-400 hover:text-white">История</a>
+        <a href="#results" class="nav-link text-zinc-400 hover:text-white">Результаты</a>
+        <a href="#recommendations" class="nav-link text-zinc-400 hover:text-white">Рекомендации</a>
+      </div>
+      
+      <button onclick="document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' })" 
+              class="hidden md:block px-5 py-1.5 text-sm bg-violet-600 hover:bg-violet-500 rounded-2xl font-medium">
+        Пройти тест
+      </button>
+      
+      <button onclick="toggleMobileMenu()" class="md:hidden text-zinc-400 p-2">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-5 pb-4 bg-zinc-950 border-t border-zinc-800">
+      <div class="flex flex-col text-sm">
+        <a href="#about" class="py-2.5 text-zinc-300">О проекте</a>
+        <a href="#benefits" class="py-2.5 text-zinc-300">Польза</a>
+        <a href="#risks" class="py-2.5 text-zinc-300">Риски</a>
+        <a href="#history" class="py-2.5 text-zinc-300">История и классификация</a>
+        <a href="#results" class="py-2.5 text-zinc-300">Результаты опроса</a>
+        <a href="#recommendations" class="py-2.5 text-zinc-300">Рекомендации</a>
+        <a href="#quiz" class="py-2.5 text-violet-400">Пройти тест</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pt-12 pb-10 px-5 bg-[radial-gradient(#27272a_0.7px,transparent_1px)] bg-[length:3px_3px]">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-xs tracking-widest mb-6 text-violet-400">
+        УЛЬЯНОВСКИЙ ГОСУДАРСТВЕННЫЙ ТЕХНИЧЕСКИЙ УНИВЕРСИТЕТ • 2026
+      </div>
+      
+      <h1 class="text-5xl md:text-6xl font-semibold tracking-tighter leading-none mb-5">
+        Компьютерные игры:<br>
+        <span class="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">польза и риски</span>
+      </h1>
+      
+      <p class="max-w-md mx-auto text-lg text-zinc-400 mb-8">
+        Просветительский сайт по результатам индивидуального проекта.<br>
+        Для подростков и родителей.
+      </p>
+      
+      <div class="flex flex-wrap justify-center gap-3">
+        <button onclick="document.getElementById('benefits').scrollIntoView({ behavior: 'smooth' })" 
+                class="px-7 py-3 bg-white text-zinc-950 font-medium rounded-2xl flex items-center gap-2 hover:bg-zinc-100">
+          Узнать о пользе <i class="fa-solid fa-arrow-right"></i>
+        </button>
+        <button onclick="document.getElementById('results').scrollIntoView({ behavior: 'smooth' })" 
+                class="px-7 py-3 bg-zinc-900 border border-zinc-700 hover:bg-zinc-800 rounded-2xl flex items-center gap-2">
+          Результаты опроса
+        </button>
+      </div>
+      
+      <div class="mt-10 flex justify-center gap-x-8 text-sm">
+        <div>
+          <div class="text-3xl font-semibold">2,7 млрд</div>
+          <div class="text-zinc-500 text-xs">игроков в мире</div>
+        </div>
+        <div>
+          <div class="text-3xl font-semibold">81,8%</div>
+          <div class="text-zinc-500 text-xs">отмечают пользу</div>
+        </div>
+        <div>
+          <div class="text-3xl font-semibold">11</div>
+          <div class="text-zinc-500 text-xs">респондентов</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="max-w-5xl mx-auto px-5 py-12 border-t border-zinc-800">
+    <div class="grid md:grid-cols-12 gap-x-10 gap-y-6">
+      <div class="md:col-span-5">
+        <div class="text-violet-400 text-sm tracking-[2px] mb-1">ИНДИВИДУАЛЬНЫЙ ПРОЕКТ</div>
+        <h2 class="section-title text-4xl font-semibold tracking-tight">О проекте</h2>
+      </div>
+      <div class="md:col-span-7 space-y-5 text-[15px]">
+        <p><strong class="text-white">Цель:</strong> Разработать просветительский веб-сайт для подростков и их родителей, содержащий результаты анализа влияния компьютерных игр и практические рекомендации по безопасному геймингу.</p>
+        
+        <div>
+          <div class="font-medium mb-1.5">Задачи исследования:</div>
+          <ul class="text-sm text-zinc-300 space-y-[3px] pl-4 list-disc">
+            <li>Проанализировать научную литературу</li>
+            <li>Выявить позитивные и негативные эффекты</li>
+            <li>Провести опрос среди целевой аудитории</li>
+            <li>Сформулировать рекомендации по рациональному использованию</li>
+            <li>Разработать информационный сайт</li>
+          </ul>
+        </div>
+        
+        <div class="text-sm pt-1">
+          <span class="text-zinc-400">Объект:</span> компьютерные игры как явление современной культуры<br>
+          <span class="text-zinc-400">Предмет:</span> влияние на психологическое состояние, познавательные способности и социальное поведение
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section id="benefits" class="bg-zinc-900 py-12">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="mb-8">
+        <div class="text-emerald-400 text-xs tracking-widest">ПОЗИТИВНОЕ ВЛИЯНИЕ</div>
+        <h2 class="section-title text-3xl font-semibold tracking-tight">Польза компьютерных игр</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="card benefit-card p-5 rounded-3xl">
+          <div class="text-emerald-400 mb-3"><i class="fa-solid fa-brain text-xl"></i></div>
+          <div class="font-semibold mb-1">Развитие когнитивных способностей</div>
+          <div class="text-sm text-zinc-400">Логическое мышление, память и концентрация внимания</div>
+        </div>
+        <div class="card benefit-card p-5 rounded-3xl">
+          <div class="text-emerald-400 mb-3"><i class="fa-solid fa-bolt text-xl"></i></div>
+          <div class="font-semibold mb-1">Улучшение реакции и моторики</div>
+          <div class="text-sm text-zinc-400">Тренировка скорости реакции и координации «глаз-рука»</div>
+        </div>
+        <div class="card benefit-card p-5 rounded-3xl">
+          <div class="text-emerald-400 mb-3"><i class="fa-solid fa-users text-xl"></i></div>
+          <div class="font-semibold mb-1">Социализация и командная работа</div>
+          <div class="text-sm text-zinc-400">Общение и взаимодействие в команде с людьми со всего мира</div>
+        </div>
+        <div class="card benefit-card p-5 rounded-3xl">
+          <div class="text-emerald-400 mb-3"><i class="fa-solid fa-heart text-xl"></i></div>
+          <div class="font-semibold mb-1">Снятие стресса и эмоциональная разгрузка</div>
+          <div class="text-sm text-zinc-400">Эффективный способ отдыха после учёбы или работы</div>
+        </div>
+        <div class="card benefit-card p-5 rounded-3xl">
+          <div class="text-emerald-400 mb-3"><i class="fa-solid fa-lightbulb text-xl"></i></div>
+          <div class="font-semibold mb-1">Развитие креативности</div>
+          <div class="text-sm text-zinc-400">Игры-песочницы стимулируют творческое мышление</div>
+        </div>
+        <div class="card benefit-card p-5 rounded-3xl">
+          <div class="text-emerald-400 mb-3"><i class="fa-solid fa-globe text-xl"></i></div>
+          <div class="font-semibold mb-1">Изучение иностранных языков</div>
+          <div class="text-sm text-zinc-400">Расширение словарного запаса при игре на английском</div>
+        </div>
+        <div class="card benefit-card p-5 rounded-3xl">
+          <div class="text-emerald-400 mb-3"><i class="fa-solid fa-tachometer-alt text-xl"></i></div>
+          <div class="font-semibold mb-1">Навыки принятия решений</div>
+          <div class="text-sm text-zinc-400">Быстрый анализ ситуаций в условиях ограниченного времени</div>
+        </div>
+        <div class="card benefit-card p-5 rounded-3xl">
+          <div class="text-emerald-400 mb-3"><i class="fa-solid fa-trophy text-xl"></i></div>
+          <div class="font-semibold mb-1">Профессиональные перспективы</div>
+          <div class="text-sm text-zinc-400">Карьера в киберспорте, стриминге и разработке игр</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RISKS -->
+  <section id="risks" class="max-w-6xl mx-auto px-5 py-12">
+    <div class="mb-8">
+      <div class="text-rose-400 text-xs tracking-widest">НЕГАТИВНОЕ ВЛИЯНИЕ</div>
+      <h2 class="section-title text-3xl font-semibold tracking-tight">Риски компьютерных игр</h2>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="risk-card card p-5 rounded-3xl flex gap-4">
+        <div class="text-rose-400 mt-1"><i class="fa-solid fa-exclamation-triangle text-xl"></i></div>
+        <div>
+          <div class="font-semibold">Игровая зависимость</div>
+          <div class="text-sm text-zinc-400 mt-0.5">Gaming Disorder признана ВОЗ (МКБ-11). Потеря контроля над временем.</div>
+        </div>
+      </div>
+      <div class="risk-card card p-5 rounded-3xl flex gap-4">
+        <div class="text-rose-400 mt-1"><i class="fa-solid fa-eye text-xl"></i></div>
+        <div>
+          <div class="font-semibold">Проблемы со зрением</div>
+          <div class="text-sm text-zinc-400 mt-0.5">Синдром компьютерного зрения, сухость глаз и усталость.</div>
+        </div>
+      </div>
+      <div class="risk-card card p-5 rounded-3xl flex gap-4">
+        <div class="text-rose-400 mt-1"><i class="fa-solid fa-bed text-xl"></i></div>
+        <div>
+          <div class="font-semibold">Нарушения сна</div>
+          <div class="text-sm text-zinc-400 mt-0.5">Игра допоздна приводит к бессоннице и хронической усталости.</div>
+        </div>
+      </div>
+      <div class="risk-card card p-5 rounded-3xl flex gap-4">
+        <div class="text-rose-400 mt-1"><i class="fa-solid fa-book text-xl"></i></div>
+        <div>
+          <div class="font-semibold">Снижение успеваемости</div>
+          <div class="text-sm text-zinc-400 mt-0.5">Отнимает время от учёбы и других важных дел.</div>
+        </div>
+      </div>
+      <div class="risk-card card p-5 rounded-3xl flex gap-4">
+        <div class="text-rose-400 mt-1"><i class="fa-solid fa-angry text-xl"></i></div>
+        <div>
+          <div class="font-semibold">Психологические проблемы</div>
+          <div class="text-sm text-zinc-400 mt-0.5">Агрессивность, социальная изоляция, тревожность.</div>
+        </div>
+      </div>
+      <div class="risk-card card p-5 rounded-3xl flex gap-4">
+        <div class="text-rose-400 mt-1"><i class="fa-solid fa-user-injured text-xl"></i></div>
+        <div>
+          <div class="font-semibold">Проблемы со здоровьем</div>
+          <div class="text-sm text-zinc-400 mt-0.5">Нарушения осанки, гиподинамия, туннельный синдром.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY + CLASSIFICATION -->
+  <section id="history" class="bg-zinc-900 py-12">
+    <div class="max-w-6xl mx-auto px-5">
+      <h2 class="text-3xl font-semibold tracking-tight mb-8">История развития компьютерных игр</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-3 mb-10">
+        <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800">
+          <div class="text-violet-400 font-medium">1952</div>
+          <div class="font-semibold">OXO</div>
+          <div class="text-xs text-zinc-400">Первая компьютерная игра</div>
+        </div>
+        <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800">
+          <div class="text-violet-400 font-medium">1958</div>
+          <div class="font-semibold">Tennis for Two</div>
+          <div class="text-xs text-zinc-400">Первая интерактивная игра</div>
+        </div>
+        <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800">
+          <div class="text-violet-400 font-medium">1972</div>
+          <div class="font-semibold">Pong (Atari)</div>
+          <div class="text-xs text-zinc-400">Начало коммерческой индустрии</div>
+        </div>
+        <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800">
+          <div class="text-violet-400 font-medium">1980-е</div>
+          <div class="font-semibold">Pac-Man, Mario, Tetris</div>
+          <div class="text-xs text-zinc-400">Эра игровых приставок</div>
+        </div>
+        <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800">
+          <div class="text-violet-400 font-medium">1990-е</div>
+          <div class="font-semibold">Doom, Warcraft</div>
+          <div class="text-xs text-zinc-400">3D и сетевые игры</div>
+        </div>
+        <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800">
+          <div class="text-violet-400 font-medium">2000-е</div>
+          <div class="font-semibold">World of Warcraft</div>
+          <div class="text-xs text-zinc-400">Расцвет MMO</div>
+        </div>
+        <div class="bg-zinc-950 p-4 rounded-2xl border border-zinc-800">
+          <div class="text-violet-400 font-medium">2010–2020-е</div>
+          <div class="font-semibold">Мобильные игры, VR, киберспорт</div>
+          <div class="text-xs text-zinc-400">Современная эпоха</div>
+        </div>
+      </div>
+
+      <!-- Classification -->
+      <h3 class="font-semibold mb-4">Классификация компьютерных игр</h3>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div class="bg-zinc-950 border border-zinc-800 px-4 py-3 rounded-2xl text-sm">
+          <div class="font-medium">Экшен (Action)</div>
+          <div class="text-xs text-zinc-400">Шутеры, файтинги, аркады</div>
+        </div>
+        <div class="bg-zinc-950 border border-zinc-800 px-4 py-3 rounded-2xl text-sm">
+          <div class="font-medium">Ролевые (RPG)</div>
+          <div class="text-xs text-zinc-400">Прокачка, сюжет</div>
+        </div>
+        <div class="bg-zinc-950 border border-zinc-800 px-4 py-3 rounded-2xl text-sm">
+          <div class="font-medium">Стратегии</div>
+          <div class="text-xs text-zinc-400">Тактика и планирование</div>
+        </div>
+        <div class="bg-zinc-950 border border-zinc-800 px-4 py-3 rounded-2xl text-sm">
+          <div class="font-medium">Песочницы</div>
+          <div class="text-xs text-zinc-400">Minecraft, Roblox, GTA</div>
+        </div>
+        <div class="bg-zinc-950 border border-zinc-800 px-4 py-3 rounded-2xl text-sm">
+          <div class="font-medium">Симуляторы</div>
+          <div class="text-xs text-zinc-400">Вождение, управление</div>
+        </div>
+        <div class="bg-zinc-950 border border-zinc-800 px-4 py-3 rounded-2xl text-sm">
+          <div class="font-medium">Хорроры</div>
+          <div class="text-xs text-zinc-400">Атмосфера страха</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGE GROUPS -->
+  <section class="max-w-5xl mx-auto px-5 py-12">
+    <h2 class="text-3xl font-semibold tracking-tight mb-6">Возрастные особенности</h2>
+    <div class="space-y-3 text-sm">
+      <div class="flex flex-col md:flex-row gap-3 bg-zinc-900 border border-zinc-800 p-4 rounded-2xl">
+        <div class="font-medium md:w-56">3–6 лет (дошкольники)</div>
+        <div class="text-emerald-400 font-medium">15–20 мин/день</div>
+        <div class="text-zinc-400">Только развивающие игры. Строгий контроль.</div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-3 bg-zinc-900 border border-zinc-800 p-4 rounded-2xl">
+        <div class="font-medium md:w-56">7–10 лет</div>
+        <div class="text-emerald-400 font-medium">30–60 мин/день</div>
+        <div class="text-zinc-400">Предпочтение образовательным играм.</div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-3 bg-zinc-900 border border-zinc-800 p-4 rounded-2xl">
+        <div class="font-medium md:w-56">11–14 лет</div>
+        <div class="text-emerald-400 font-medium">1–1,5 часа/день</div>
+        <div class="text-zinc-400">Важно соблюдать режим и баланс с учебой.</div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-3 bg-zinc-900 border border-zinc-800 p-4 rounded-2xl">
+        <div class="font-medium md:w-56">15–17 лет</div>
+        <div class="text-emerald-400 font-medium">1,5–2 часа/день</div>
+        <div class="text-zinc-400">Самоконтроль и осознанность.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results" class="bg-zinc-900 py-12">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <div class="text-violet-400 text-sm tracking-widest">ПРАКТИЧЕСКОЕ ИССЛЕДОВАНИЕ</div>
+          <h2 class="section-title text-3xl font-semibold tracking-tight">Результаты онлайн-анкетирования</h2>
+          <p class="text-sm text-zinc-400">11 респондентов (данные из Google Формы)</p>
+        </div>
+        <button onclick="resetSurveyData()" class="text-xs px-4 py-1.5 bg-zinc-800 rounded-xl hover:bg-zinc-700 flex items-center gap-2">
+          <i class="fa-solid fa-redo"></i> <span>Сбросить</span>
+        </button>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div class="stat-card p-5 rounded-3xl">
+          <div class="text-xs text-zinc-500">Играют каждый день</div>
+          <div class="text-4xl font-semibold mt-1" id="stat-daily">45.5%</div>
+          <div class="text-xs text-emerald-400">5 из 11 человек</div>
+        </div>
+        <div class="stat-card p-5 rounded-3xl">
+          <div class="text-xs text-zinc-500">Снимают стресс</div>
+          <div class="text-4xl font-semibold mt-1">81.8%</div>
+          <div class="text-xs text-emerald-400">9 из 11 респондентов</div>
+        </div>
+        <div class="stat-card p-5 rounded-3xl">
+          <div class="text-xs text-zinc-500">Не замечают вреда</div>
+          <div class="text-4xl font-semibold mt-1" id="stat-negative">72.7%</div>
+          <div class="text-xs text-emerald-400">Но проблемы со сном у 72.7%</div>
+        </div>
+        <div class="stat-card p-5 rounded-3xl">
+          <div class="text-xs text-zinc-500">Проблемы со сном</div>
+          <div class="text-4xl font-semibold mt-1">72.7%</div>
+          <div class="text-xs text-amber-400">Иногда или регулярно</div>
+        </div>
+      </div>
+
+      <!-- Simple CSS Charts -->
+      <div class="grid md:grid-cols-2 gap-5">
+        <!-- Frequency -->
+        <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-6">
+          <div class="font-medium mb-4">Частота игры</div>
+          <div class="space-y-4 text-sm">
+            <div>
+              <div class="flex justify-between mb-1"><span>Каждый день</span> <span id="freq-daily" class="font-medium">45.5%</span></div>
+              <div class="bg-zinc-800 h-2.5 rounded-full"><div class="simple-bar" style="width: 45.5%" id="bar-daily"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1"><span>1–2 раза в неделю</span> <span id="freq-weekly" class="font-medium">27.3%</span></div>
+              <div class="bg-zinc-800 h-2.5 rounded-full"><div class="simple-bar" style="width: 27.3%" id="bar-weekly"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1"><span>3–4 раза в неделю</span> <span id="freq-34" class="font-medium">18.2%</span></div>
+              <div class="bg-zinc-800 h-2.5 rounded-full"><div class="simple-bar" style="width: 18.2%" id="bar-34"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1"><span>Реже</span> <span id="freq-less" class="font-medium">9.1%</span></div>
+              <div class="bg-zinc-800 h-2.5 rounded-full"><div class="simple-bar" style="width: 9.1%" id="bar-less"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-6">
+          <div class="font-medium mb-4">Положительные эффекты (множественный выбор)</div>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center gap-3"><div class="w-2.5 h-2.5 bg-emerald-500 rounded"></div> Снятие стресса — <span class="font-medium">81.8%</span></div>
+            <div class="flex items-center gap-3"><div class="w-2.5 h-2.5 bg-emerald-500 rounded"></div> Логическое мышление — <span class="font-medium">72.7%</span></div>
+            <div class="flex items-center gap-3"><div class="w-2.5 h-2.5 bg-emerald-500 rounded"></div> Реакция и внимание — <span class="font-medium">63.6%</span></div>
+            <div class="flex items-center gap-3"><div class="w-2.5 h-2.5 bg-emerald-500 rounded"></div> Командная работа — <span class="font-medium">45.5%</span></div>
+          </div>
+          <div class="text-xs text-zinc-500 mt-4">* Полные данные обновляются при добавлении ответов ниже</div>
+        </div>
+      </div>
+
+      <!-- Interactive Survey Form -->
+      <div class="mt-8 bg-zinc-950 border border-zinc-800 rounded-3xl p-6">
+        <div class="font-semibold mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-poll text-violet-400"></i> 
+          <span>Добавить свой ответ в статистику</span>
+        </div>
+        <p class="text-xs text-zinc-400 mb-5">Ответы обновляют графики на странице (работает в браузере)</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5 text-sm">
+          <div>
+            <div class="text-xs text-zinc-400 mb-1.5">Как часто вы играете?</div>
+            <select id="user-freq" class="bg-zinc-900 border border-zinc-700 text-sm w-full px-3 py-2 rounded-xl">
+              <option value="">Выберите...</option>
+              <option value="daily">Каждый день</option>
+              <option value="weekly1_2">1–2 раза в неделю</option>
+              <option value="weekly3_4">3–4 раза в неделю</option>
+              <option value="less">Реже</option>
+            </select>
+          </div>
+          <div>
+            <div class="text-xs text-zinc-400 mb-1.5">Игры помогают снимать стресс?</div>
+            <select id="user-stress" class="bg-zinc-900 border border-zinc-700 text-sm w-full px-3 py-2 rounded-xl">
+              <option value="">Выберите...</option>
+              <option value="yes">Да</option>
+              <option value="no">Нет</option>
+            </select>
+          </div>
+          <div>
+            <div class="text-xs text-zinc-400 mb-1.5">Есть проблемы со сном?</div>
+            <select id="user-sleep" class="bg-zinc-900 border border-zinc-700 text-sm w-full px-3 py-2 rounded-xl">
+              <option value="">Выберите...</option>
+              <option value="sometimes">Иногда</option>
+              <option value="regularly">Регулярно</option>
+              <option value="never">Нет</option>
+            </select>
+          </div>
+          <div>
+            <div class="text-xs text-zinc-400 mb-1.5">Замечаете отрицательное влияние?</div>
+            <select id="user-negative" class="bg-zinc-900 border border-zinc-700 text-sm w-full px-3 py-2 rounded-xl">
+              <option value="">Выберите...</option>
+              <option value="no">Нет</option>
+              <option value="yes">Да</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="flex gap-3 mt-5">
+          <button onclick="submitUserResponse()" 
+                  class="flex-1 bg-violet-600 hover:bg-violet-500 py-2.5 rounded-2xl text-sm font-medium">
+            Добавить мой ответ
+          </button>
+          <button onclick="resetSurveyData()" class="px-6 border border-zinc-700 rounded-2xl text-sm">
+            Сбросить
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECOMMENDATIONS -->
+  <section id="recommendations" class="max-w-5xl mx-auto px-5 py-12">
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <div class="text-emerald-400 text-xs tracking-widest">ПРАКТИЧЕСКИЕ СОВЕТЫ</div>
+        <h2 class="text-3xl font-semibold tracking-tight">Рекомендации по безопасному геймингу</h2>
+      </div>
+      <div class="text-right">
+        <div class="text-xs text-zinc-400">Прогресс</div>
+        <div class="text-3xl font-semibold tabular-nums" id="progress-text">0%</div>
+      </div>
+    </div>
+    
+    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-2" id="recommendations-list">
+      <!-- Populated by JS -->
+    </div>
+    
+    <div class="flex flex-wrap gap-3 mt-5">
+      <button onclick="downloadRecommendations()" 
+              class="px-5 py-2 bg-white text-zinc-950 rounded-2xl text-sm font-medium flex items-center gap-2">
+        <i class="fa-solid fa-download"></i> Скачать рекомендации
+      </button>
+      <button onclick="resetRecommendations()" 
+              class="px-5 py-2 border border-zinc-700 hover:bg-zinc-900 rounded-2xl text-sm flex items-center gap-2">
+        <i class="fa-solid fa-undo"></i> Сбросить
+      </button>
+      <button onclick="document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' })" 
+              class="px-5 py-2 border border-zinc-700 hover:bg-zinc-900 rounded-2xl text-sm">
+        Пройти персональный тест
+      </button>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="bg-zinc-900 py-12">
+    <div class="max-w-3xl mx-auto px-5">
+      <div class="text-center mb-8">
+        <div class="inline-block text-xs px-4 py-1 rounded-full border border-violet-500/30 text-violet-400 mb-3">ИНТЕРАКТИВ</div>
+        <h2 class="text-3xl font-semibold tracking-tight">Тест: Какой у вас баланс?</h2>
+        <p class="text-zinc-400 mt-1">Ответьте на 5 вопросов и узнайте свой результат</p>
+      </div>
+      
+      <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-7" id="quiz-container">
+        <div id="quiz-questions"></div>
+        
+        <button onclick="calculateQuiz()" 
+                class="mt-6 w-full py-3 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 rounded-2xl font-medium">
+          Получить результат
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <section class="max-w-5xl mx-auto px-5 py-12">
+    <h2 class="text-2xl font-semibold tracking-tight mb-5">Список литературы</h2>
+    <div class="text-sm text-zinc-400 space-y-1.5">
+      <div>1. Всемирная организация здравоохранения. МКБ-11. Игровое расстройство.</div>
+      <div>2. Newzoo. Global Games Market Report 2023.</div>
+      <div>3. Американская психологическая ассоциация. Resolution on Violent Video Games, 2020.</div>
+      <div>4. Bavelier D., Green C. S. Action Video Game Modifies Visual Selective Attention. Nature, 2003.</div>
+      <div>5. Przybylski A. K. A Large-Scale Test of the Goldilocks Hypothesis. Psychological Science, 2017.</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-zinc-800 py-7 text-xs text-zinc-500 px-5">
+    <div class="max-w-6xl mx-auto">Индивидуальный проект «Влияние компьютерных игр» • УлГТУ, 2026</div>
+  </footer>
+
+  <!-- Instructions for Google Sites -->
+  <section id="instructions" class="max-w-5xl mx-auto px-5 py-10 border-t border-zinc-800">
+    <div class="google-sites-note p-6 rounded-3xl">
+      <h3 class="font-semibold mb-3">Как перенести этот сайт в Google Sites</h3>
+      <ol class="list-decimal pl-5 space-y-2 text-sm">
+        <li>Откройте <a href="https://sites.google.com" target="_blank" class="text-violet-400 underline">Google Sites</a> и создайте новый сайт.</li>
+        <li>Вставляйте разделы по очереди (скопируйте текст из этого файла).</li>
+        <li>Для графиков: создайте диаграммы в Google Таблицах и вставьте их через «Вставить → Диаграмма».</li>
+        <li>Для опроса: создайте Google Форму и вставьте её (лучше всего).</li>
+        <li>Для чек-листа рекомендаций используйте таблицу или просто список с галочками.</li>
+      </ol>
+      <p class="mt-4 text-xs text-zinc-400">Полная интерактивность (живые графики и тест) возможна только на этом HTML-файле или на React-сайте. Google Sites сильно ограничен в возможностях.</p>
+    </div>
+  </section>
+
+  <script>
+    // Tailwind script
+    function initTailwind() {
+      document.documentElement.style.setProperty('--accent', '#8b5cf6');
+    }
+    
+    // Mobile menu
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Recommendations
+    let recommendations = [
+      { id: 1, text: "Контролировать время игры — заранее устанавливать лимит", completed: false },
+      { id: 2, text: "Не играть допоздна — завершать игру минимум за 1 час до сна", completed: false },
+      { id: 3, text: "Делать перерывы — после 30–45 минут игры отдыхать 5–10 минут", completed: false },
+      { id: 4, text: "Беречь зрение — соблюдать расстояние до монитора и гимнастику для глаз", completed: false },
+      { id: 5, text: "Следить за осанкой — сидеть прямо, не сутулиться", completed: false },
+      { id: 6, text: "Совмещать игры с физической активностью", completed: false },
+      { id: 7, text: "Выбирать игры осознанно — отдавать предпочтение развивающим", completed: false },
+      { id: 8, text: "Не заменять реальное общение виртуальным", completed: false },
+      { id: 9, text: "Контролировать эмоциональное состояние", completed: false },
+      { id: 10, text: "Использовать игры как отдых, а не как основное занятие", completed: false }
+    ];
+
+    function loadRecommendations() {
+      const saved = localStorage.getItem('gs_recommendations');
+      if (saved) recommendations = JSON.parse(saved);
+      renderRecommendations();
+    }
+
+    function saveRecommendations() {
+      localStorage.setItem('gs_recommendations', JSON.stringify(recommendations));
+    }
+
+    function renderRecommendations() {
+      const container = document.getElementById('recommendations-list');
+      container.innerHTML = '';
+      
+      let completed = 0;
+      
+      recommendations.forEach(rec => {
+        if (rec.completed) completed++;
+        
+        const div = document.createElement('div');
+        div.className = `rec-item flex gap-3 px-5 py-[13px] items-start rounded-2xl cursor-pointer hover:bg-zinc-800 ${rec.completed ? 'completed' : ''}`;
+        div.innerHTML = `
+          <div class="mt-0.5">
+            <div class="w-6 h-6 flex items-center justify-center border ${rec.completed ? 'bg-emerald-500 border-emerald-500' : 'border-zinc-600'} rounded-full">
+              ${rec.completed ? '<i class="fa-solid fa-check text-white text-xs"></i>' : ''}
+            </div>
+          </div>
+          <div class="flex-1 text-[15px] pr-3 leading-snug">${rec.text}</div>
+        `;
+        
+        div.onclick = () => {
+          rec.completed = !rec.completed;
+          saveRecommendations();
+          renderRecommendations();
+        };
+        
+        container.appendChild(div);
+      });
+      
+      const progress = Math.round((completed / recommendations.length) * 100);
+      document.getElementById('progress-text').textContent = progress + '%';
+    }
+
+    function resetRecommendations() {
+      if (confirm('Сбросить все отметки?')) {
+        recommendations.forEach(r => r.completed = false);
+        saveRecommendations();
+        renderRecommendations();
+      }
+    }
+
+    function downloadRecommendations() {
+      let text = "РЕКОМЕНДАЦИИ ПО БЕЗОПАСНОМУ ИСПОЛЬЗОВАНИЮ КОМПЬЮТЕРНЫХ ИГР\n\n";
+      recommendations.forEach((rec, i) => {
+        text += `${i + 1}. [${rec.completed ? '✓' : ' '}] ${rec.text}\n`;
+      });
+      text += "\nИсточник: Индивидуальный проект «Влияние компьютерных игр», УлГТУ 2026";
+      
+      const blob = new Blob([text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'рекомендации_игры.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Interactive Survey
+    let survey = {
+      daily: 5, weekly1_2: 3, weekly3_4: 2, less: 1, total: 11,
+      stressYes: 9,
+      negativeNo: 8, negativeYes: 3,
+      sleepSometimes: 7, sleepRegularly: 1, sleepNever: 3
+    };
+
+    function updateCharts() {
+      // Frequency
+      const total = survey.total;
+      document.getElementById('stat-daily').textContent = Math.round(survey.daily / total * 100) + '%';
+      document.getElementById('freq-daily').textContent = Math.round(survey.daily / total * 100) + '%';
+      document.getElementById('bar-daily').style.width = Math.round(survey.daily / total * 100) + '%';
+      
+      document.getElementById('freq-weekly').textContent = Math.round(survey.weekly1_2 / total * 100) + '%';
+      document.getElementById('bar-weekly').style.width = Math.round(survey.weekly1_2 / total * 100) + '%';
+      
+      document.getElementById('freq-34').textContent = Math.round(survey.weekly3_4 / total * 100) + '%';
+      document.getElementById('bar-34').style.width = Math.round(survey.weekly3_4 / total * 100) + '%';
+      
+      document.getElementById('freq-less').textContent = Math.round(survey.less / total * 100) + '%';
+      document.getElementById('bar-less').style.width = Math.round(survey.less / total * 100) + '%';
+      
+      // Negative
+      const negTotal = survey.negativeNo + survey.negativeYes;
+      document.getElementById('stat-negative').textContent = Math.round(survey.negativeNo / negTotal * 100) + '%';
+    }
+
+    function submitUserResponse() {
+      const freq = document.getElementById('user-freq').value;
+      const stress = document.getElementById('user-stress').value;
+      const sleep = document.getElementById('user-sleep').value;
+      const negative = document.getElementById('user-negative').value;
+      
+      if (!freq || !stress || !sleep || !negative) {
+        alert("Пожалуйста, заполните все поля");
+        return;
+      }
+      
+      // Update frequency
+      if (freq === 'daily') survey.daily++;
+      else if (freq === 'weekly1_2') survey.weekly1_2++;
+      else if (freq === 'weekly3_4') survey.weekly3_4++;
+      else survey.less++;
+      survey.total++;
+      
+      // Stress
+      if (stress === 'yes') survey.stressYes++;
+      
+      // Negative
+      if (negative === 'no') survey.negativeNo++;
+      else survey.negativeYes++;
+      
+      // Sleep
+      if (sleep === 'sometimes') survey.sleepSometimes++;
+      else if (sleep === 'regularly') survey.sleepRegularly++;
+      else survey.sleepNever++;
+      
+      updateCharts();
+      
+      // Reset selects
+      document.getElementById('user-freq').value = '';
+      document.getElementById('user-stress').value = '';
+      document.getElementById('user-sleep').value = '';
+      document.getElementById('user-negative').value = '';
+      
+      alert("Спасибо! Ваш ответ добавлен в статистику.");
+    }
+
+    function resetSurveyData() {
+      survey = { daily: 5, weekly1_2: 3, weekly3_4: 2, less: 1, total: 11, stressYes: 9, negativeNo: 8, negativeYes: 3, sleepSometimes: 7, sleepRegularly: 1, sleepNever: 3 };
+      updateCharts();
+    }
+
+    // Quiz
+    const quizQuestions = [
+      "Как часто вы играете в компьютерные игры?",
+      "Сколько обычно длится одна игровая сессия?",
+      "Часто ли вы играете после 23:00?",
+      "Бывает ли, что игры мешают учёбе?",
+      "Замечаете ли вы усталость глаз или раздражительность?"
+    ];
+    
+    const quizOptions = [
+      ["Каждый день", "3–5 раз в неделю", "1–2 раза в неделю", "Реже"],
+      ["Менее 1 часа", "1–2 часа", "2–3 часа", "Более 3 часов"],
+      ["Почти никогда", "Иногда", "Довольно часто", "Почти каждый день"],
+      ["Никогда", "Редко", "Иногда", "Часто"],
+      ["Нет", "Редко", "Иногда", "Часто"]
+    ];
+
+    let quizAnswers = [];
+
+    function renderQuiz() {
+      const container = document.getElementById('quiz-questions');
+      container.innerHTML = '';
+      quizAnswers = new Array(quizQuestions.length).fill(null);
+      
+      quizQuestions.forEach((q, qIndex) => {
+        const div = document.createElement('div');
+        div.className = 'mb-6';
+        div.innerHTML = `
+          <div class="font-medium mb-2 text-sm">${qIndex + 1}. ${q}</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="q${qIndex}">
+          </div>
+        `;
+        
+        const optsContainer = div.querySelector(`#q${qIndex}`);
+        
+        quizOptions[qIndex].forEach((opt, aIndex) => {
+          const btn = document.createElement('button');
+          btn.className = `text-left px-4 py-2.5 rounded-2xl border border-zinc-700 text-sm hover:border-zinc-500`;
+          btn.textContent = opt;
+          
+          btn.onclick = () => {
+            // Deselect all
+            optsContainer.querySelectorAll('button').forEach(b => b.classList.remove('!border-violet-500', 'bg-zinc-800'));
+            btn.classList.add('!border-violet-500', 'bg-zinc-800');
+            quizAnswers[qIndex] = aIndex;
+          };
+          
+          optsContainer.appendChild(btn);
+        });
+        
+        container.appendChild(div);
+      });
+    }
+
+    function calculateQuiz() {
+      if (quizAnswers.includes(null)) {
+        alert("Пожалуйста, ответьте на все вопросы");
+        return;
+      }
+      
+      let risk = 0;
+      quizAnswers.forEach(ans => risk += ans);
+      
+      const score = Math.round(100 - (risk / 15) * 100);
+      
+      let message = '';
+      let advice = '';
+      
+      if (score >= 85) {
+        message = 'Отличный баланс!';
+        advice = 'Вы очень ответственно подходите к играм.';
+      } else if (score >= 65) {
+        message = 'Хороший баланс';
+        advice = 'В целом здоровое отношение. Обратите внимание на режим сна.';
+      } else if (score >= 45) {
+        message = 'Средний баланс — есть над чем поработать';
+        advice = 'Установите чёткие лимиты времени.';
+      } else {
+        message = 'Рекомендуется пересмотреть привычки';
+        advice = 'Начните с рекомендаций на сайте.';
+      }
+      
+      const resultHTML = `
+        <div class="text-center py-4">
+          <div class="text-6xl font-semibold tracking-tighter mb-1">${score}</div>
+          <div class="text-violet-400 text-sm mb-4">из 100 — баланс игры и жизни</div>
+          <div class="text-xl font-semibold mb-2">${message}</div>
+          <p class="text-zinc-300">${advice}</p>
+          
+          <div class="mt-6 flex gap-3 justify-center">
+            <button onclick="location.reload()" class="px-6 py-2 text-sm bg-white text-zinc-950 rounded-2xl">Пройти ещё раз</button>
+            <button onclick="document.getElementById('recommendations').scrollIntoView({behavior:'smooth'})" class="px-6 py-2 text-sm border border-zinc-600 rounded-2xl">К рекомендациям</button>
+          </div>
+        </div>
+      `;
+      
+      document.getElementById('quiz-container').innerHTML = resultHTML;
+    }
+
+    function initQuiz() {
+      renderQuiz();
+    }
+
+    // Copy content helper for Google Sites
+    function copyAllContent() {
+      const text = `КОМПЬЮТЕРНЫЕ ИГРЫ: ПОЛЬЗА И РИСКИ\n\n` +
+        `Индивидуальный проект. Ульяновский государственный технический университет, 2026.\n\n` +
+        `Цель: Разработать просветительский веб-сайт для подростков и родителей.\n\n` +
+        `=== ПОЛЬЗА ===\n` +
+        `- Развитие когнитивных способностей\n` +
+        `- Улучшение реакции и моторики\n` +
+        `- Социализация и командная работа\n` +
+        `- Снятие стресса\n` +
+        `- Развитие креативности\n` +
+        `- Изучение языков\n` +
+        `- Навыки принятия решений\n` +
+        `- Профессиональные перспективы\n\n` +
+        `=== РИСКИ ===\n` +
+        `- Игровая зависимость (ВОЗ)\n` +
+        `- Проблемы со зрением\n` +
+        `- Нарушения сна\n` +
+        `- Снижение успеваемости\n` +
+        `- Психологические проблемы\n` +
+        `- Проблемы со здоровьем\n\n` +
+        `Результаты опроса (11 человек):\n` +
+        `45.5% играют каждый день\n` +
+        `81.8% отмечают снятие стресса\n` +
+        `72.7% не замечают отрицательного влияния\n` +
+        `72.7% имеют проблемы со сном\n\n` +
+        `Рекомендации:\n` +
+        `1. Контролировать время игры\n` +
+        `2. Не играть допоздна\n` +
+        `3. Делать перерывы\n` +
+        `4. Беречь зрение\n` +
+        `5. Следить за осанкой\n` +
+        `6. Совмещать с физической активностью\n` +
+        `7. Выбирать игры осознанно\n` +
+        `8. Не заменять реальное общение\n` +
+        `9. Контролировать эмоции\n` +
+        `10. Использовать как отдых, а не основное занятие`;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Текст скопирован! Теперь вставьте его в Google Sites.");
+      });
+    }
+
+    // Initialize everything
+    function init() {
+      initTailwind();
+      loadRecommendations();
+      updateCharts();
+      initQuiz();
+      
+      // Keyboard support for mobile menu
+      document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape") {
+          document.getElementById('mobile-menu').classList.add('hidden');
+        }
+      });
+      
+      // Show first-time hint
+      setTimeout(() => {
+        if (!localStorage.getItem('gs_shown_hint')) {
+          console.log('%c[Google Sites] Подсказка: используйте кнопку "Скопировать весь текст для Google Sites"', 'color:#64748b');
+          localStorage.setItem('gs_shown_hint', 'true');
+        }
+      }, 4000);
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>
